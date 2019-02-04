@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NewsContentManagement.Models.News>
+
+@{
+    ViewBag.Title = "NewsFilter";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Filtered Results</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-lg-4 mb-4 ">
+                <div class="card h-100">
+                    <h4 class="card-header">@item.Title</h4>
+                    <div class="card h-25">
+                        <h6 class="card-header">@item.Authors.authorName & @item.Categories.categoryName</h6>
+                    </div>
+
+                    <div class="card-body">
+                        @*<p class="card-text">@item.Icerik</p>*@
+                        @*Aşağıdaki if kutuların içi 70 karakterden büyükse kayma olmasın diye sınırlıyor. baştan yapalım bir*@
+                        <p class="card-text">
+                            @if (string.IsNullOrEmpty(item.Content) == false && item.Content.Length > 70)
+                            {
+                                @(item.Content.Substring(0, 70))
+
+                            }
+                            else
+                            {
+                                @item.Content
+                            }
+
+                        </p>
+                    </div>
+
+                    <div class="card-footer">
+                        @*@Html.ActionLink("Details", "Details", new { id = item.Id })*@
+                        <a href="@Url.Action("NewsDetails", "Home", new { id = item.Id })" class="btn btn-primary">Detaylar</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
