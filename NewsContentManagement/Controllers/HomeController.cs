@@ -9,6 +9,8 @@ using NewsContentManagement.Models;
 using NewsContentManagement.Data;
 using PagedList;
 using PagedList.Mvc;
+using Microsoft.AspNet.Identity;
+
 namespace NewsContentManagement.Controllers
 {
     public class HomeController : Controller
@@ -55,6 +57,7 @@ namespace NewsContentManagement.Controllers
             }
             if (commentText != null)
             {
+               
                 comments.NewsId = id;
                 comments.commentContent = commentText;
                 comments.Date = DateTime.Now;

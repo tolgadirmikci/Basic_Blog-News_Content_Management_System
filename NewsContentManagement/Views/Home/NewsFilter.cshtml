@@ -24,12 +24,14 @@
                         <p class="card-text">
                             @if (string.IsNullOrEmpty(item.Content) == false && item.Content.Length > 70)
                             {
-                                @(item.Content.Substring(0, 70))
+                                @Html.Raw(item.Content.Substring(0,50))
+                                @*@(item.Content.Substring(0, 70))*@
 
                             }
                             else
                             {
-                                @item.Content
+                                @Html.Raw(item.Content)
+                                @*@item.Content*@
                             }
 
                         </p>
